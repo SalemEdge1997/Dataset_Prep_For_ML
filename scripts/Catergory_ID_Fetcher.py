@@ -30,7 +30,9 @@ def fetch_catergory_ids(api_key):
             "title": [cat["snippet"]["title"] for cat in categories]
         }
         
-        return pd.DataFrame(category_data)
+        # Creating a DataFrame and writing to a CSV file.
+        dataframe = pd.DataFrame(category_data)
+        dataframe.to_csv('catergory_ids.csv')
     else:
         raise Exception(f"Error fetching data: {response.status_code} - {response.text}")
     
